@@ -1,11 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from config import Config
+
 
 nkosl_app = Flask(__name__)
-nkosl_app.config['SECRET_KEY'] = 'du_bist_mein_sofa'
-nkosl_app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://nkosl:nkosl@<database_IP>/nkosl"
-nkosl_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+nkosl_app.config.from_object(Config)
 db = SQLAlchemy(nkosl_app)
 migrate = Migrate(nkosl_app, db)
 
