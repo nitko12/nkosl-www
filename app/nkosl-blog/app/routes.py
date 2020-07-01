@@ -4,8 +4,8 @@ from app.forms import SubmitForm
 from app.models import Posts
 
 
-@nkosl_app.route('/nkosl/')
-@nkosl_app.route('/nkosl/index/')
+@nkosl_app.route('/')
+@nkosl_app.route('/index/')
 def index():
     # posts = [
     #     {
@@ -21,7 +21,7 @@ def index():
     return render_template("index.html", title="NKOSL index", posts=posts)
 
 
-@nkosl_app.route('/nkosl/submit/', methods=['GET', 'POST'])
+@nkosl_app.route('/submit/', methods=['GET', 'POST'])
 def submit():
     form = SubmitForm()
     if form.validate_on_submit():
