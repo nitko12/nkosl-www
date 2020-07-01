@@ -1,11 +1,11 @@
-from flask import render_template, flash, redirect
+from flask import render_template, flash, redirect, url_for
 from app import nkosl_app, db
 from app.forms import SubmitForm
 from app.models import Posts
 
 
-@nkosl_app.route('/')
-@nkosl_app.route('/index/')
+@nkosl_app.route('/nkosl/')
+@nkosl_app.route('/nkosl/index/')
 def index():
     # posts = [
     #     {
@@ -21,7 +21,7 @@ def index():
     return render_template("index.html", title="NKOSL index", posts=posts)
 
 
-@nkosl_app.route('/submit/', methods=['GET', 'POST'])
+@nkosl_app.route('/nkosl/submit/', methods=['GET', 'POST'])
 def submit():
     form = SubmitForm()
     if form.validate_on_submit():
@@ -29,5 +29,5 @@ def submit():
         post = Posts(title=form.title.data, body=form.body.data)
         db.session.add(post)
         db.session.commit()
-        return redirect('/index')
+        return redirect(url_for('index'))
     return render_template('submit.html', title="NKOSL submit", form=form)
