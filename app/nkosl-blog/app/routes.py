@@ -18,7 +18,7 @@ def index():
     #     },
     # ]
     posts = Posts.query.all()
-    return render_template("index.html", title="NKOSL index", posts=posts)
+    return render_template("index.html", title="NKOSL index - DEVELOP", posts=posts)
 
 
 @nkosl_app.route('/submit/', methods=['GET', 'POST'])
