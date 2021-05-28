@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 WorkingDirectory=/opt/nkosl-www/app/nkosl-blog
-ExecStart=/home/nkosl/nkosl_env/bin/gunicorn -b localhost:5000 app:nkosl_app
+ExecStart=gunicorn -b localhost:5000 app:nkosl_app
 Restart=always
 
 [Install]
